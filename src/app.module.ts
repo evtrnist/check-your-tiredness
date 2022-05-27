@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     TelegrafModule.forRoot({
-      token: process.env.TELEGRAM_BOT_TOKEN,
+      token: process.env.BOT_TOKEN,
     }),
   ],
   controllers: [AppController],
