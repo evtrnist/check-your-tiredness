@@ -11,6 +11,7 @@ export class AppService {
 
   @Start()
   async startCommand(ctx: Context) {
+    console.log(ctx);
     await ctx.reply('Welcomeee');
   }
 
