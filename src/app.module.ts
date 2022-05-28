@@ -14,12 +14,12 @@ import { TirednessModule } from './database/entities/tiredness/tiredness.module'
   imports: [
     ConfigModule.forRoot(),
     TelegrafModule.forRoot({
-      token: env.get('BOT_TOKEN').required().asString(),
+      token: process.env.BOT_TOKEN,
     }),
     UserModule,
     TirednessModule,
     TypeOrmModule.forRoot({
-      url: env.get('DATABASE_URL').required().asUrlString(),
+      url: process.env.DATABASE_URL,
       type: 'postgres',
       ssl: {
         rejectUnauthorized: false,
