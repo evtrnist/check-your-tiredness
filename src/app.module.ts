@@ -7,6 +7,8 @@ import env from 'env-var';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './database/entities/user/user.module';
+import { TirednessModule } from './database/entities/tiredness/tiredness.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { AppService } from './app.service';
     TelegrafModule.forRoot({
       token: env.get('BOT_TOKEN').required().asString(),
     }),
+    UserModule,
+    TirednessModule,
     TypeOrmModule.forRoot({
       url: env.get('DATABASE_URL').required().asUrlString(),
       type: 'postgres',

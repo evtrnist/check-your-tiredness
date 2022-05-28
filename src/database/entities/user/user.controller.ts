@@ -7,7 +7,7 @@ type User = {
   password: string;
 };
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
