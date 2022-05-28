@@ -8,7 +8,7 @@ type User = {
 };
 
 @Controller('users')
-export class UsersController {
+export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()

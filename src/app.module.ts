@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TelegrafModule } from 'nestjs-telegraf';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import env from 'env-var';
 
@@ -9,11 +10,19 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      envFilePath: ['.env.development.local', '.env.development'],
-    }),
+    ConfigModule.forRoot(),
     TelegrafModule.forRoot({
       token: env.get('BOT_TOKEN').required().asString(),
+    }),
+    TypeOrmModule.forRoot({
+      url: env.get('DATABASE_URL').required().asUrlString(),
+      type: 'postgres',
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true, // This for development
+      autoLoadEntities: true,
     }),
   ],
   controllers: [AppController],
