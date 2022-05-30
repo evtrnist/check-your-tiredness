@@ -6,9 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import env from 'env-var';
 
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UserModule } from './database/entities/user/user.module';
-import { TirednessModule } from './database/entities/tiredness/tiredness.module';
+import { AppService } from '@app/app.service';
+import { UserModule } from '@app/database/entities/user/user.module';
+import { TirednessModule } from '@app/database/entities/tiredness/tiredness.module';
 
 @Module({
   imports: [
